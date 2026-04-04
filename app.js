@@ -13,9 +13,10 @@ const PORT = process.env.PORT || 7777;
 dotenv.config();
 app.use(
   cors({
-    origin:
-      "https://meetzyy.tanishqsaxena.xyz/" ||
+    origin: [
+      "https://meetzyy.tanishqsaxena.xyz/",
       "https://meetzyy-frontend.vercel.app/",
+    ],
     credentials: true,
   }),
 );
