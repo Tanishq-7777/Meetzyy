@@ -14,8 +14,8 @@ dotenv.config();
 app.use(
   cors({
     origin: [
-      "https://meetzyy.tanishqsaxena.xyz/",
-      "https://meetzyy-frontend.vercel.app/",
+      "https://meetzyy.tanishqsaxena.xyz",
+      "https://meetzyy-frontend.vercel.app",
     ],
     credentials: true,
   }),
