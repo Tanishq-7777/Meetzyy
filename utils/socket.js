@@ -104,7 +104,11 @@ async function processQueue(io) {
 
 const initializeSocket = (server) => {
   const io = socket(server, {
-    cors: { origin: "http://localhost:5173" },
+    cors: {
+      origin:
+        "https://meetzyy.tanishqsaxena.xyz/" ||
+        "https://meetzyy-frontend.vercel.app/",
+    },
   });
 
   io.on("connection", (socket) => {

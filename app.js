@@ -8,12 +8,14 @@ const authRouter = require("./Routers/authRouter");
 const meetRouter = require("./Routers/meetRouter");
 const http = require("http");
 
-const PORT = 7777;
+const PORT = process.env.PORT || 7777;
 
 dotenv.config();
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin:
+      "https://meetzyy.tanishqsaxena.xyz/" ||
+      "https://meetzyy-frontend.vercel.app/",
     credentials: true,
   }),
 );
@@ -30,8 +32,8 @@ initializeSocket(server);
 const startServer = async () => {
   try {
     await connectDb();
-    server.listen(PORT, () => {
-      console.log("Your app Listening on the PORT", PORT);
+    server.listen(PORT, "0.0.0.0", () => {
+      console.log(`🚀 Server running on port ${PORT}`);
     });
   } catch (err) {
     console.error("Server start error:", err);
