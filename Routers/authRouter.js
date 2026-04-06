@@ -20,7 +20,13 @@ authRouter.post("/signup", async (req, res) => {
     const token = jwt.sign({ userId: user._id }, "2026$Meetzyy", {
       expiresIn: "30d",
     });
-    res.cookie("token", token);
+    res.cookie("token", token, {
+      httpOnly: true,
+      expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+
+      secure: true,
+      sameSite: "none",
+    });
     res.json({ data: user });
   } catch (err) {
     res.status(400).send(err.message);
@@ -42,7 +48,12 @@ authRouter.post("/login", async (req, res) => {
       const token = jwt.sign({ userId: user._id }, "2026$Meetzyy", {
         expiresIn: "30d",
       });
-      res.cookie("token", token);
+      res.cookie("token", token, {
+        httpOnly: true,
+        expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+        secure: true,
+        sameSite: "none",
+      });
       res.json({ data: user });
     } else {
       res.send("Something went wrong");
