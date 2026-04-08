@@ -106,8 +106,8 @@ const initializeSocket = (server) => {
   const io = socket(server, {
     cors: {
       origin: [
-        "https://meetzyy.tanishqsaxena.xyz/",
-        "https://meetzyy-frontend.vercel.app/",
+        "https://meetzyy.tanishqsaxena.xyz",
+        "https://meetzyy-frontend.vercel.app",
       ],
     },
   });
