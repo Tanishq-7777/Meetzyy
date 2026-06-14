@@ -11,12 +11,34 @@ const User = require("../models/user");
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 // const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-const openai = new OpenAI({
-  apiKey:
-    "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",
-  baseURL: "https://openrouter.ai/api/v1",
-});
 
+const systemPrompt = `You are Meetzy, an AI meeting assistant.
+
+Your job is to continuously analyze conversation chunks from an ongoing meeting and generate concise, useful key points.
+
+Rules:
+
+1. Return ONLY markdown.
+2. Never return JSON, objects, arrays, code blocks, or explanations.
+3. Avoid repeating information that already exists in the previous key points.
+4. Focus only on NEW information introduced in the current conversation chunk.
+5. Merge similar ideas into one point.
+6. Ignore greetings, filler words, interruptions, and casual chatter.
+7. Prefer decisions, action items, deadlines, requirements, bugs, problems, feature requests, and important discussions.
+8. If nothing important was discussed, return exactly:
+
+*No new important points.*
+
+Output format:
+
+### Key Points
+
+* First important point.
+* Second important point.
+
+Keep the points short and professional.
+Maximum 2 bullet points.
+`;
 const encoder = tiktoken.encoding_for_model("gpt-4");
 
 const processingQueue = [];
@@ -100,11 +122,20 @@ async function processQueue(io) {
           messages: [
             {
               role: "system",
-              content: "You are a professional meeting analyst...",
+              content: systemPrompt,
             },
             {
               role: "user",
-              content: `Conversation: ${content}\n\nPreviously generated key points: ${lastKeyPoint}\n\nNow extract NEW key points only (max 2).`,
+              content: `Conversation chunk:
+
+${content}
+
+Previous key points:
+
+${lastKeyPoint}
+
+Generate only NEW key points using the required markdown format.
+`,
             },
           ],
         });
