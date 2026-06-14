@@ -9,7 +9,9 @@ const userAuth = async (req, res, next) => {
     }
     //verify the token
     const { userId } = jwt.verify(token, "2026$Meetzyy");
-    const user = await User.findById(userId).select("name email ");
+    const user = await User.findById(userId).select(
+      "name email remainingToken membershipType ",
+    );
     if (!user) {
       return res.status(401).send("Your Token Is Invalid.");
     }

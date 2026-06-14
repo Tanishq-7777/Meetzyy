@@ -1,29 +1,33 @@
-const express = require("express");
 const dotenv = require("dotenv");
+dotenv.config();
+const express = require("express");
 const connectDb = require("./database/connectDB");
 const app = express();
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const authRouter = require("./Routers/authRouter");
 const meetRouter = require("./Routers/meetRouter");
+const paymentRouter = require("./Routers/payment");
 const http = require("http");
 
 const PORT = process.env.PORT || 7777;
 
-dotenv.config();
 app.use(
   cors({
     origin: [
       "https://meetzyy.tanishqsaxena.xyz",
       "https://meetzyy-frontend.vercel.app",
+      "http://localhost:5173",
     ],
     credentials: true,
   }),
 );
+// app.use("/api/payment/webhook", express.raw({ type: "*/*" }));
 app.use(express.json());
 app.use(cookieParser());
 app.use("/auth", authRouter);
 app.use("/meeting", meetRouter);
+app.use("/api", paymentRouter);
 
 const server = http.createServer(app);
 const initializeSocket = require("./utils/socket");
@@ -37,7 +41,7 @@ const startServer = async () => {
       console.log(`🚀 Server running on port ${PORT}`);
     });
   } catch (err) {
-    console.error("Server start error:", err);
+    console.error("Server start error:", err.message);
   }
 };
 

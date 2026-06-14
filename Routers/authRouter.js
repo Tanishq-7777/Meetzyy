@@ -37,7 +37,7 @@ authRouter.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email: email }).select(
-      "name email password isVerified",
+      "name email password isVerified remainingToken membershipType",
     );
     if (!user) {
       throw new Error("No User Found.");

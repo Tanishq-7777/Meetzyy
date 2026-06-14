@@ -15,6 +15,18 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    remainingToken: {
+      type: Number,
+      default: 100,
+    },
+    membershipType: {
+      type: String,
+      default: "Free",
+    },
+    token_buffer: {
+      type: Number,
+      default: 0,
+    },
   },
   { timestamps: true },
 );
