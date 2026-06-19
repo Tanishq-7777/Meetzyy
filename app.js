@@ -25,6 +25,9 @@ app.use(
 // app.use("/api/payment/webhook", express.raw({ type: "*/*" }));
 app.use(express.json());
 app.use(cookieParser());
+app.get("/corn", (req, res) => {
+  res.status(200).send("okkkkkkk");
+});
 app.use("/auth", authRouter);
 app.use("/meeting", meetRouter);
 app.use("/api", paymentRouter);

@@ -16,6 +16,9 @@ authRouter.post("/signup", async (req, res) => {
       password: hashedPassoword,
     });
     await user.save();
+    const savedUser = await User.findById(user._id).select(
+      "name email isVerified remainingToken membershipType",
+    );
 
     const token = jwt.sign({ userId: user._id }, "2026$Meetzyy", {
       expiresIn: "30d",
@@ -27,7 +30,7 @@ authRouter.post("/signup", async (req, res) => {
       secure: true,
       sameSite: "none",
     });
-    res.json({ data: user });
+    res.json({ data: savedUser });
   } catch (err) {
     res.status(400).send(err.message);
   }
