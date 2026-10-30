@@ -1,0 +1,201 @@
+:root {
+  --nv-bg: #030303; /* Matches your main page background exactly */
+  --nv-accent: #00ffa3;
+  --nv-text: #ffffff;
+  --nv-muted: #71717a; /* Darker muted gray to keep focus on active items */
+  --nv-border: rgba(255, 255, 255, 0.04); /* Extremely subtle border */
+}
+
+.nv-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 64px;
+  background-color: var(--nv-bg);
+  /* Glassmorphism only kicks in when scrolling over content */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--nv-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  font-family: "Inter", sans-serif;
+}
+
+/* Updated Glow Line - sharper and more professional */
+.nv-glow-line {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 255, 163, 0.08) 50%,
+    transparent 100%
+  );
+}
+
+.nv-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nv-logo-icon {
+  width: 32px;
+  height: 32px;
+  background: rgba(0, 255, 163, 0.05);
+  border: 1px solid rgba(0, 255, 163, 0.15);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--nv-accent);
+}
+
+.nv-logo-text {
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--nv-text);
+  letter-spacing: -0.5px;
+}
+
+.nv-accent {
+  color: var(--nv-accent);
+}
+
+.nv-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nv-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--nv-muted);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.nv-nav-link:hover {
+  color: var(--nv-text);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.nv-membership-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 255, 163, 0.03);
+  border: 1px solid rgba(0, 255, 163, 0.1);
+  color: var(--nv-accent);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.nv-divider {
+  width: 1px;
+  height: 16px;
+  background: var(--nv-border);
+  margin: 0 4px;
+}
+
+.nv-auth-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.nv-login {
+  background: var(--nv-text);
+  color: #000;
+}
+
+.nv-login:hover {
+  background: var(--nv-accent);
+  box-shadow: 0 0 20px rgba(0, 255, 163, 0.2);
+}
+
+.nv-logout {
+  background: transparent;
+  color: #ff4d4d;
+  border: 1px solid rgba(255, 77, 77, 0.1);
+}
+
+.nv-logout:hover {
+  background: rgba(255, 77, 77, 0.05);
+  border-color: rgba(255, 77, 77, 0.2);
+}
+/* Token Box */
+.nv-token-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 10px;
+
+  background: rgba(0, 255, 163, 0.04);
+  border: 1px solid rgba(0, 255, 163, 0.12);
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  transition: all 0.25s ease;
+  cursor: default;
+}
+
+/* Hover glow */
+.nv-token-box:hover {
+  background: rgba(0, 255, 163, 0.08);
+  border-color: rgba(0, 255, 163, 0.25);
+  box-shadow: 0 0 12px rgba(0, 255, 163, 0.15);
+}
+
+/* Icon */
+.nv-token-icon {
+  color: var(--nv-accent);
+}
+
+/* Text container */
+.nv-token-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+/* Small label */
+.nv-token-label {
+  font-size: 9px;
+  color: var(--nv-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Main value */
+.nv-token-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--nv-text);
+}

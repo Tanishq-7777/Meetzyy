@@ -1,0 +1,237 @@
+:root {
+  --mh-bg: #030303;
+  --mh-accent: #00ffa3;
+  --mh-text: #f0f2f5;
+  --mh-muted: #a1a1aa;
+  --mh-border: rgba(255, 255, 255, 0.06);
+  --mh-glass: rgba(255, 255, 255, 0.02);
+}
+
+.mh-page {
+  height: 100vh;
+  background-color: var(--mh-bg);
+  color: var(--mh-text);
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.mh-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle at 2px 2px,
+    rgba(0, 255, 163, 0.04) 1px,
+    transparent 0
+  );
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+/* Loading State */
+.mh-loading-screen {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--mh-bg);
+  color: var(--mh-accent);
+}
+
+.mh-loader-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.mh-spinner {
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Navbar */
+.mh-navbar {
+  padding: 16px 40px;
+  background: rgba(3, 3, 3, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--mh-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+.mh-back-link {
+  color: var(--mh-muted);
+  text-decoration: none;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s ease;
+  font-weight: 500;
+}
+
+.mh-back-link:hover {
+  color: var(--mh-accent);
+}
+
+.mh-title-section {
+  text-align: right;
+}
+
+.mh-main-title {
+  font-family: "Syne", sans-serif;
+  font-size: 20px;
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.mh-meta-group {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  font-size: 12px;
+  color: #52525b;
+  margin-top: 4px;
+}
+
+/* Content Layout */
+.mh-content-layout {
+  display: flex;
+  flex: 1;
+  padding: 24px;
+  gap: 20px;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.mh-glass-panel {
+  flex: 1;
+  background: var(--mh-glass);
+  border-radius: 24px;
+  border: 1px solid var(--mh-border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.mh-panel-header {
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.01);
+  border-bottom: 1px solid var(--mh-border);
+}
+
+.mh-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mh-mic-icon {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--mh-muted);
+}
+.mh-sparkle-icon {
+  background: rgba(0, 255, 163, 0.1);
+  color: var(--mh-accent);
+}
+
+.mh-panel-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.mh-scroll-area {
+  padding: 32px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Transcript Styling */
+.mh-transcript-text {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #d1d1d6;
+  text-align: left;
+}
+
+/* Markdown Specific Styling */
+.mh-markdown-container h1,
+.mh-markdown-container h2,
+.mh-markdown-container h3 {
+  color: var(--mh-accent);
+  margin: 24px 0 16px;
+  font-family: "Syne", sans-serif;
+  font-weight: 700;
+}
+
+.mh-markdown-container h1 {
+  font-size: 1.5rem;
+}
+.mh-markdown-container h2 {
+  font-size: 1.25rem;
+  border-bottom: 1px solid var(--mh-border);
+  padding-bottom: 8px;
+}
+
+.mh-markdown-container p {
+  margin-bottom: 16px;
+  line-height: 1.7;
+  color: #e4e4e7;
+}
+
+.mh-markdown-container ul,
+.mh-markdown-container ol {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.mh-markdown-container li {
+  margin-bottom: 10px;
+  color: #d1d1d6;
+}
+
+.mh-markdown-container strong {
+  color: var(--mh-accent);
+  font-weight: 600;
+}
+
+/* Custom Scrollbar */
+.scroll-custom::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scroll-custom::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.scroll-custom::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@media (max-width: 1024px) {
+  .mh-content-layout {
+    flex-direction: column;
+  }
+}
