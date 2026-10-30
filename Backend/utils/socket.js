@@ -10,10 +10,7 @@ const tiktoken = require("tiktoken");
 const User = require("../models/user");
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
-const openai = new OpenAI({
-  apiKey: process.env.OPENROUTER_API_KEY,
-  baseURL: "https://openrouter.ai/api/v1",
-});
+
 
 const encoder = tiktoken.encoding_for_model("gpt-4");
 
